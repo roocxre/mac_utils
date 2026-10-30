@@ -1,0 +1,23 @@
+# Built or downloaded at install time; never committed (see models.lock.json and the release assets)
+models/
+brokers/registry/
+release-data/
+bin/
+
+# Python and tools
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+build/
+dist/
+
+# macOS
+.DS_Store
+
+# Drawn by `python -m dataflow install`
+dataflow/extension/icons/
+
+# Swift package build output (the app is assembled in build/)
+installer/.build/
+installer/.swiftpm/

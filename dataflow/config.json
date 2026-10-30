@@ -1,0 +1,19 @@
+{
+  "policy_days": 30,
+  "canary_days": 30,
+  "canary_wait_seconds": 10,
+  "canary_timeout_seconds": 45,
+  "lists_days": 7,
+  "pages_keep_days": 90,
+  "submit_grace_seconds": 5,
+  "nli": {"model": "nli-deberta-v3-base", "yes": 0.7, "no": 0.7},
+  "privbert": {"model": "privbert-opp115", "threshold": 0.5},
+  "fields": {"model": "all-MiniLM-L6-v2", "head": "field-head.npz", "threshold": 0.55},
+  "lists": {
+    "tracker_radar": "https://staticcdn.duckduckgo.com/trackerblocking/v6/current/extension-tds.json",
+    "disconnect_entities": "https://raw.githubusercontent.com/disconnectme/disconnect-tracking-protection/master/entities.json",
+    "disconnect_services": "https://raw.githubusercontent.com/disconnectme/disconnect-tracking-protection/master/services.json",
+    "easyprivacy": "https://easylist.to/easylist/easyprivacy.txt"
+  },
+  "extra_emails": []
+}

@@ -1,0 +1,50 @@
+[project]
+name = "mac-utils"
+version = "0.1.0"
+description = "launchd agents, a hotkey assistant and email privacy tools for macOS"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.14,<3.15"
+# What every component needs. Each component's own packages are an extra below, named by component id
+# (see components.json); the installer syncs the extras of the components you pick.
+dependencies = [
+    "pyobjc-core>=12.2",
+    "pyobjc-framework-Cocoa>=12.2",
+    "pyobjc-framework-Quartz>=12.2",
+    "requests>=2.32",
+]
+
+[project.optional-dependencies]
+assistant = ["numpy>=2.5", "safetensors>=0.8", "tokenizers>=0.23"]
+appblocker = ["pyobjc-framework-MediaPlayer>=12.2"]
+sitemonitor = ["pyobjc-framework-ApplicationServices>=12.2"]
+unsub = ["playwright>=1.64"]
+brokers = [
+    "numpy>=2.5",
+    "onnxruntime>=1.31",
+    "playwright>=1.64",
+    "pyyaml>=6.0",
+    "sqlcipher3-wheels>=0.5.7",
+    "tokenizers>=0.23",
+]
+dataflow = [
+    "numpy>=2.5",
+    "onnxruntime>=1.31",
+    "playwright>=1.64",
+    "pyyaml>=6.0",
+    "safetensors>=0.8",
+    "scikit-learn>=1.9",
+    "tokenizers>=0.23",
+]
+dev = ["pyflakes>=3.4"]
+
+[project.urls]
+Homepage = "https://github.com/roocxre/mac_utils"
+
+[tool.uv]
+# Not a package: the code runs from its folder, which manage.py puts on the virtualenv's path.
+package = false
+# Apple Silicon Macs only, so the lock holds just those wheels.
+environments = ["sys_platform == 'darwin' and platform_machine == 'arm64'"]
+# Resolve only releases at least two weeks old when the lock was made, so a fresh upload can't slip in.
+exclude-newer = "2026-10-14T00:00:00Z"

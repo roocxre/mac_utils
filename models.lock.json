@@ -1,0 +1,140 @@
+{
+  "_about": "Models the installer downloads into models/<name>/, each file pinned to an exact upstream commit and checked against its SHA-256. None of them is stored in this repository.",
+  "models": {
+    "all-MiniLM-L6-v2": {
+      "purpose": "Sentence embeddings: the assistant's loose-wording intents, the extension's field types",
+      "license": "Apache-2.0",
+      "source": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "used_by": [
+        "assistant",
+        "dataflow"
+      ],
+      "files": [
+        {
+          "path": "config.json",
+          "url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json",
+          "sha256": "953f9c0d463486b10a6871cc2fd59f223b2c70184f49815e7efbcab5d8908b41",
+          "size": 612
+        },
+        {
+          "path": "model.safetensors",
+          "url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/model.safetensors",
+          "sha256": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+          "size": 90868376
+        },
+        {
+          "path": "tokenizer.json",
+          "url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer.json",
+          "sha256": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+          "size": 466247
+        }
+      ]
+    },
+    "nli-deberta-v3-xsmall": {
+      "purpose": "NLI: sorting broker replies",
+      "license": "Apache-2.0",
+      "source": "https://huggingface.co/cross-encoder/nli-deberta-v3-xsmall",
+      "revision": "a150876415327c80daeff35ca6f68f5ed8cf5c24",
+      "used_by": [
+        "brokers"
+      ],
+      "files": [
+        {
+          "path": "added_tokens.json",
+          "url": "https://huggingface.co/cross-encoder/nli-deberta-v3-xsmall/resolve/a150876415327c80daeff35ca6f68f5ed8cf5c24/added_tokens.json",
+          "sha256": "a4b6bfe668f2b3cf6f0cd535e98a0663d2d0d4a4a15f13075ad3597d33985a23",
+          "size": 26
+        },
+        {
+          "path": "config.json",
+          "url": "https://huggingface.co/cross-encoder/nli-deberta-v3-xsmall/resolve/a150876415327c80daeff35ca6f68f5ed8cf5c24/config.json",
+          "sha256": "8d9f07bf7ba54a6fc3b1962483056f94c39dcf188db4cf61843e1c88f94b2342",
+          "size": 1053
+        },
+        {
+          "path": "model.onnx",
+          "url": "https://huggingface.co/cross-encoder/nli-deberta-v3-xsmall/resolve/a150876415327c80daeff35ca6f68f5ed8cf5c24/onnx/model_qint8_arm64.onnx",
+          "sha256": "ef41fe8474f6070373f97fbe8362461d55108f387723280fcdb64f8015133db2",
+          "size": 87377068
+        },
+        {
+          "path": "special_tokens_map.json",
+          "url": "https://huggingface.co/cross-encoder/nli-deberta-v3-xsmall/resolve/a150876415327c80daeff35ca6f68f5ed8cf5c24/special_tokens_map.json",
+          "sha256": "ed7c099c988dbb414b18a6980d20cb57b91b7cd119f6f6941eb364b0e892e712",
+          "size": 301
+        },
+        {
+          "path": "tokenizer.json",
+          "url": "https://huggingface.co/cross-encoder/nli-deberta-v3-xsmall/resolve/a150876415327c80daeff35ca6f68f5ed8cf5c24/tokenizer.json",
+          "sha256": "5124ef2ead1a10a717703bc436de7f353da76d6340e4587719b42b1693707964",
+          "size": 8656624
+        },
+        {
+          "path": "tokenizer_config.json",
+          "url": "https://huggingface.co/cross-encoder/nli-deberta-v3-xsmall/resolve/a150876415327c80daeff35ca6f68f5ed8cf5c24/tokenizer_config.json",
+          "sha256": "f3eecd07c370ef0bf7dd3780d3cd68cf9c8b00c267e21a208ddcd8f82bfec1a6",
+          "size": 1346
+        }
+      ]
+    },
+    "nli-deberta-v3-base": {
+      "purpose": "NLI: what a privacy policy says about selling and sharing",
+      "license": "Apache-2.0",
+      "source": "https://huggingface.co/cross-encoder/nli-deberta-v3-base",
+      "revision": "6c749ce3425cd33b46d187e45b92bbf96ee12ec7",
+      "used_by": [
+        "dataflow"
+      ],
+      "files": [
+        {
+          "path": "config.json",
+          "url": "https://huggingface.co/cross-encoder/nli-deberta-v3-base/resolve/6c749ce3425cd33b46d187e45b92bbf96ee12ec7/config.json",
+          "sha256": "897e756eb59d3183adb505952e7910e7cbc7750a43f3b3747a96b688d2b02a47",
+          "size": 1052
+        },
+        {
+          "path": "model.onnx",
+          "url": "https://huggingface.co/cross-encoder/nli-deberta-v3-base/resolve/6c749ce3425cd33b46d187e45b92bbf96ee12ec7/onnx/model_qint8_arm64.onnx",
+          "sha256": "cc4ef779fe3cb1906559e3dbf389469cd5f914c6497484dccf954a82e94b8a56",
+          "size": 244422413
+        },
+        {
+          "path": "tokenizer.json",
+          "url": "https://huggingface.co/cross-encoder/nli-deberta-v3-base/resolve/6c749ce3425cd33b46d187e45b92bbf96ee12ec7/tokenizer.json",
+          "sha256": "5124ef2ead1a10a717703bc436de7f353da76d6340e4587719b42b1693707964",
+          "size": 8656624
+        }
+      ]
+    },
+    "bert-base-NER": {
+      "purpose": "Named entities: organisations named in privacy policies",
+      "license": "MIT",
+      "source": "https://huggingface.co/Xenova/bert-base-NER",
+      "revision": "8e892123e8b7c2c0c2bd1dcb598b7d244c4e53aa",
+      "used_by": [
+        "dataflow"
+      ],
+      "files": [
+        {
+          "path": "config.json",
+          "url": "https://huggingface.co/Xenova/bert-base-NER/resolve/8e892123e8b7c2c0c2bd1dcb598b7d244c4e53aa/config.json",
+          "sha256": "a73a2eccc921bbdea95a94b49a157d3694b5c2abbae7a6f3000e14404a9c31a8",
+          "size": 999
+        },
+        {
+          "path": "model.onnx",
+          "url": "https://huggingface.co/Xenova/bert-base-NER/resolve/8e892123e8b7c2c0c2bd1dcb598b7d244c4e53aa/onnx/model_quantized.onnx",
+          "sha256": "caaee70a5518ec7f9e46e5308fcc9263a8c227703a9ce46cf61c69a552349648",
+          "size": 108952255
+        },
+        {
+          "path": "tokenizer.json",
+          "url": "https://huggingface.co/Xenova/bert-base-NER/resolve/8e892123e8b7c2c0c2bd1dcb598b7d244c4e53aa/tokenizer.json",
+          "sha256": "343989712a36cd8b253efeaf8baf6a08b9d2583f78e395e83832e8ee9f8d8ee1",
+          "size": 668923
+        }
+      ]
+    }
+  }
+}

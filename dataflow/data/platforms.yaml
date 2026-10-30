@@ -1,0 +1,110 @@
+# Hand-maintained: what the public lists don't say. Registrable domains only.
+# Categories used across the helper and the extension:
+#   identity-resolution  ties a browser or an email to a person across sites (high risk)
+#   session-replay       records what you type and do on the page (high risk)
+#   data-broker          owned by a company in a data-broker registry (high risk; from the broker agent's registry)
+#   advertising, customer-data-platform    (medium risk)
+#   email-platform, analytics, tag-manager, payment, consent, social, chat, cdn, embedded, fraud-prevention
+
+categories:
+  identity-resolution:
+    [rlcdn.com, liveramp.com, pippio.com, liveintent.com, liadm.com, id5-sync.com, id5.io, tapad.com, agkn.com,
+     neustar.biz, uidapi.com, crwdcntrl.net, lotame.com, zeotap.com, bluekai.com, bkrtx.com, dotomi.com,
+     conversantmedia.com, epsilon.com, throtle.io, opensend.com, retention.com, rb2b.com, customers.ai,
+     bounceexchange.com, bouncex.net, wknd.ai, blackcrow.ai, fullcontact.com, peopledatalabs.com, clearbit.com,
+     clearbitjs.com, 6sc.co, 6sense.com, company-target.com, demandbase.com, zoominfo.com, zi-scripts.com,
+     leadfeeder.com, lfeeder.com, intentiq.com, thebrighttag.com, btstatic.com, towerdata.com, infutor.com,
+     datonics.com, adnxs-simple.com, sharethrough.com]
+  session-replay:
+    [hotjar.com, hotjar.io, fullstory.com, mouseflow.com, logrocket.com, lr-ingest.io, lr-ingest.com, lr-in.com,
+     lr-in-prod.com, smartlook.com, smartlook.cloud, quantummetric.com, contentsquare.net, contentsquare.com,
+     clarity.ms, luckyorange.com, luckyorange.net, glassboxdigital.io, glassbox.com, inspectlet.com,
+     sessioncam.com, decibelinsight.net, crazyegg.com, clicktale.net, browser-intake-datadoghq.com, heapanalytics.com,
+     posthog.com, uxcam.com, noibu.com, sessionstack.com]
+  email-platform:
+    [klaviyo.com, list-manage.com, mailchimp.com, chimpstatic.com, braze.com, appboycdn.com, iterable.com,
+     sailthru.com, listrak.com, listrakbi.com, cordial.io, attentivemobile.com, attn.tv, omnisend.com,
+     omnisnippet1.com, sendinblue.com, brevo.com, hubspot.com, hs-scripts.com, hsforms.com, hsforms.net,
+     hs-analytics.net, hubspotemail.net, marketo.net, mktoresp.com, marketo.com, pardot.com, exacttarget.com,
+     exct.net, constantcontact.com, ctctcdn.com, privy.com, privymktg.com, justuno.com, jst.ai, optinmonster.com,
+     omappapi.com, opmnstr.com, drip.com, getdrip.com, convertkit.com, ck.page, activecampaign.com, emarsys.net,
+     emarsys.com, campaignmonitor.com, createsend.com, createsend1.com, mailerlite.com, mlcdn.com, aweber.com,
+     getresponse.com, sendgrid.net, postscript.io, bluecore.com, dmtrk.net, sumo.com, wisepops.com, hellobar.com,
+     poptin.com, sendlane.com, yotpo.com]
+  customer-data-platform:
+    [segment.com, segment.io, mparticle.com, tealiumiq.com, tiqcdn.com, rudderstack.com, rudderlabs.com,
+     lytics.io, blueconic.net, treasuredata.com, actioniq.com, amperity.com, simondata.com, exponea.com,
+     bloomreach.com, demdex.net, krxd.net, zaius.com, hightouch.com, metarouter.io]
+  payment:
+    [stripe.com, stripe.network, braintreegateway.com, braintree-api.com, adyen.com, adyenpayments.com,
+     paypal.com, paypalobjects.com, squareup.com, squarecdn.com, shopifycs.com, recurly.com, chargebee.com,
+     authorize.net, spreedly.com, bluesnap.com, klarna.com, affirm.com, checkout.com]
+  consent:
+    [cookielaw.org, onetrust.com, cookiebot.com, trustarc.com, quantcast.mgr.consensu.org, privacy-center.org,
+     usercentrics.eu, osano.com, sp-prod.net, termly.io, cdn-cookieyes.com, iubenda.com, ketchcdn.com,
+     transcend-cdn.com, consentmanager.net]
+
+# Sign-in providers, by host (not whole domains: google.com and facebook.com also run ad endpoints that
+# get hashed emails). Sending your address or a sign-in token to these is how signing in works, so the
+# extension never stops it; their own sign-in pages are left out of the extension altogether (manifest).
+login_hosts:
+  [accounts.google.com, oauth2.googleapis.com, identitytoolkit.googleapis.com, securetoken.googleapis.com,
+   www.googleapis.com, firebaseapp.com, login.microsoftonline.com, login.microsoft.com, login.live.com,
+   appleid.apple.com, idmsa.apple.com, shop.app, auth0.com, okta.com, oktapreview.com, okta-emea.com,
+   clerk.com, clerk.dev, clerk.accounts.dev, supabase.co, amazoncognito.com, stytch.com, workos.com,
+   authkit.app, descope.com, fusionauth.io, onelogin.com, pingone.com, pingidentity.com, frontegg.com,
+   kinde.com, propelauth.com, logto.app, zitadel.cloud, magic.link, privy.io, hanko.io, passage.id]
+
+# Hosted payment fields: frames on these hosts are labelled "payment (…)" and left alone.
+payment_frames:
+  Stripe: [js.stripe.com, m.stripe.network, hooks.stripe.com, checkout.stripe.com]
+  Braintree: [assets.braintreegateway.com, payments.braintree-api.com]
+  Adyen: [checkoutshopper-live.adyen.com, checkoutshopper-test.adyen.com, checkoutshopper-live-us.adyen.com]
+  PayPal: [www.paypal.com, paypal.com]
+  Square: [web.squarecdn.com, pci-connect.squareup.com]
+  Shopify: [checkout.shopifycs.com]
+  Recurly: [api.recurly.com]
+
+# Email-capture widgets (discount popups, gated content): a field inside one asks for more than it needs.
+# selectors: CSS for the widget's container; scripts: script hosts that load it.
+widgets:
+  Klaviyo: {selectors: ['.klaviyo-form', '[class*="kl-private-reset-css"]', 'form[data-testid="klaviyo-form"]'],
+            scripts: [static.klaviyo.com]}
+  Privy: {selectors: ['[id^="privy-"]', '.privy-popup-container'], scripts: [widget.privy.com]}
+  Attentive: {selectors: ['#attentive_overlay', 'iframe#attentive_creative'], scripts: [cdn.attn.tv]}
+  Justuno: {selectors: ['[id^="ju_"]', '.ju_Con'], scripts: [cdn.jst.ai, my.jst.ai, justuno.com]}
+  OptinMonster: {selectors: ['[id^="om-"][id*="-holder"]', '.om-holder', '[class*="Campaign--"]'],
+                 scripts: [a.omappapi.com, a.opmnstr.com]}
+  Mailchimp: {selectors: ['#mc_embed_signup', 'form[action*="list-manage.com"]', '.mc-modal'],
+              scripts: [chimpstatic.com, downloads.mailchimp.com]}
+  Wunderkind: {selectors: ['[id^="bx-campaign"]', '.bx-campaign', '.bxc'], scripts: [tag.bounceexchange.com]}
+  Omnisend: {selectors: ['[class*="omnisend-form"]', '[id^="omnisend-form"]'], scripts: [omnisnippet1.com]}
+  Brevo: {selectors: ['.sib-form', '#sib-form'], scripts: [sibforms.com]}
+  HubSpot: {selectors: ['.hs-form', 'form[id^="hsForm_"]'], scripts: [js.hsforms.net]}
+  ConvertKit: {selectors: ['.formkit-form'], scripts: [f.convertkit.com]}
+  Sumo: {selectors: ['[class*="sumo-form"]', '.sumome-react-wysiwyg-popup-container'], scripts: [load.sumo.com]}
+  Wisepops: {selectors: ['.wisepops-root', '[class*="wisepops"]'], scripts: [loader.wisepops.com]}
+  Hello Bar: {selectors: ['#hellobar-bar', '.hellobar'], scripts: [my.hellobar.com]}
+
+# Consent tools, by the script host that loads them.
+consent_tools:
+  OneTrust: [cdn.cookielaw.org, optanon.blob.core.windows.net, cookie-cdn.cookiepro.com]
+  Cookiebot: [consent.cookiebot.com]
+  TrustArc: [consent.trustarc.com]
+  Quantcast Choice: [cmp.quantcast.com, quantcast.mgr.consensu.org]
+  Didomi: [sdk.privacy-center.org]
+  Usercentrics: [app.usercentrics.eu, web.cmp.usercentrics.eu]
+  Osano: [cmp.osano.com]
+  Sourcepoint: [cdn.privacy-mgmt.com, sourcepoint.mgr.consensu.org]
+  Termly: [app.termly.io]
+  CookieYes: [cdn-cookieyes.com]
+  iubenda: [cdn.iubenda.com]
+  Ketch: [global.ketchcdn.com]
+  Transcend: [transcend-cdn.com]
+  Shopify: [cdn.shopify.com/shopifycloud/privacy-banner]
+
+# Owner names in the tracker lists that are a registry broker under another name.
+# normalized owner name (lower case, no Inc/LLC) -> broker id in brokers/registry
+entity_aliases:
+  transunion: neustar
+  id5 technology: id5-io

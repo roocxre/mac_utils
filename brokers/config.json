@@ -1,0 +1,37 @@
+{
+  "jurisdiction": {
+    "_about": "Every request is voluntary, under the broker's own published opt-out process: it claims no residency and no legal right. Your state is your current address's in Your details (two letters), or `states` when that has none. `checked` is the date (YYYY-MM-DD) you last looked at whether your state's law gives you a right to deletion; ./manage.py doctor reminds you after recheck_months.",
+    "states": [],
+    "checked": "",
+    "recheck_months": 6,
+    "laws": [],
+    "_laws": "When a law of your state that gives you a right to deletion takes effect, add it here: {\"name\": \"<the law's name>\", \"state\": \"<your state's two letters>\", \"cite\": \"…\", \"effective\": \"YYYY-MM-DD\", \"covers\": [\"marketing\", \"people-search\"]}. Requests to brokers it covers then use the deletion_rights template, which cites it, while you live in that state. Until then every request is voluntary.",
+    "regulators": {
+      "FTC": "https://reportfraud.ftc.gov/"
+    },
+    "_regulators": "Where a complaint draft is filed. Add your state attorney general's complaint page, keyed by the state's two letters (\"XX\": \"https://…\"): a draft names it while you live in that state."
+  },
+  "approval_mode": "standing",
+  "sends_per_day": 50,
+  "send_hours": [7, 23],
+  "send_gap_minutes": 9,
+  "catch_up_per_pass": 8,
+  "gmail_label": "Data brokers",
+  "scans_per_day": 12,
+  "scan_gap_seconds": 45,
+  "follow_up_days": 30,
+  "no_response_days": 60,
+  "verify_after_days": [30, 45],
+  "recheck_days": 90,
+  "match": {"confirmed_at": 0.75, "possible_at": 0.4},
+  "nli": {"threshold": 0.8, "max_chars": 1500},
+  "report_weekday": 6,
+  "report_hour": 9,
+  "tiers": {
+    "1": "confirmed exposure: broker scripts on pages where you typed your email (the browser extension)",
+    "2": "crucial people-search sites (the Big-Ass list's top tier)",
+    "3": "the other people-search and background-check sites",
+    "4": "identity-resolution and marketing brokers",
+    "5": "the long tail of registered brokers, by email"
+  }
+}

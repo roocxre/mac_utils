@@ -1,0 +1,87 @@
+{
+  "_about": "Weights and thresholds for the inbox unsubscribe agent (unsub/rules.py). Edit freely; the next analysis reads them. The mode (temporary/permanent) is not here: `unsub mode permanent`.",
+
+  "min_volume": 1,
+  "settle_hours": 24,
+  "noncompliant_days": 10,
+  "trash_existing_on_block": false,
+
+  "unwanted": {
+    "_about": "Score for 'you do not want this'. Rates are 0..1 over all the sender's analysed mail.",
+    "delete_unread_rate": 4.0,
+    "unopened_rate": 2.0,
+    "archived_unread_rate": 1.0,
+    "spam_folder_rate": 4.0,
+    "_spam_folder": "mail Gmail put in Spam (the Spam pass, `unsub spamfolder`): you never saw it, and Gmail deletes it after 30 days, so it weighs like deleted unread",
+    "promotions_rate": 1.0,
+    "bulk": 1.0,
+    "per_week_3_or_more": 0.5,
+    "starred": -3.0,
+    "replied": -4.0,
+    "quick_delete_hours": 6,
+    "quick_delete": 0.5
+  },
+  "unsubscribe_at": 4.5,
+  "keep_below": 2.5,
+
+  "spam": {
+    "_about": "Score for 'this is spam'.",
+    "auth_fails": 3.0,
+    "auth_unaligned": 1.0,
+    "lookalike": 4.0,
+    "freemail_bulk": 3.0,
+    "no_unsubscribe": 1.5,
+    "reported_spam": 4.0
+  },
+  "block_at": 4.0,
+  "spam_unsure_at": 2.5,
+  "transactional_keep_rate": 0.5,
+
+  "content": {
+    "_about": "What one email is, from its subject (counted 1.5x), body and headers: transactional (receipts, appointments, payments, codes), marketing, or other. Each pattern counts once, with its weight. Transactional wins when it reaches transactional_at and is not beaten by marketing by more than transactional_margin: a receipt with a promo footer stays a receipt. Transactional mail is its own stream per sender and is never unsubscribed from or blocked.",
+    "transactional_at": 2.0,
+    "transactional_margin": 1.0,
+    "marketing_at": 1.5,
+    "body_chars": 30000,
+    "transactional": [
+      ["\\breceipt\\b", 2],
+      ["\\border (number|#|no\\.?|confirmation|confirmed|details|summary|status)\\b|\\byour order (has|is|was)\\b", 2],
+      ["\\b(invoice|statement|bill) (number|#|no\\.?|is (ready|available)|date|period)\\b|\\byour (bill|statement) is\\b", 2],
+      ["\\b(amount|total|balance) (paid|charged|due|billed|owed)\\b", 2],
+      ["\\bpayment (received|confirmation|confirmed|processed|failed|declined|due|scheduled|method|of \\$)", 2],
+      ["\\bthank you for your (payment|order|purchase|visit)\\b", 1.5],
+      ["\\b(appointment|reservation|booking|check-?in) (is )?(confirm\\w*|reminder|scheduled|summary|details|for|on|at)\\b", 2],
+      ["\\b(your|upcoming) (visit|appointment)\\b|\\bappointment reminder\\b", 1],
+      ["\\b(after[- ])?visit summary\\b|\\b(test|lab) results?\\b|\\bpatient portal\\b|\\bprescription\\b|\\bclaim (number|status)\\b", 1.5],
+      ["\\btracking (number|info)\\b|\\bhas shipped\\b|\\bout for delivery\\b|\\bwas delivered\\b", 2],
+      ["\\b(verification|security|one[- ]time|login|sign[- ]in) (code|pin|passcode)\\b|\\byour (code|pin) is\\b|\\b\\d{4,8} is your\\b", 3],
+      ["\\bpassword (reset|change)|\\breset your password\\b|\\bsign[- ]in (attempt|alert|from)\\b|\\bnew (sign[- ]in|login|device)\\b|\\bsecurity alert\\b", 3],
+      ["\\baccount (number )?ending in\\b|\\btransaction (id|number|#)\\b|\\bconfirmation (number|code|#)\\b|\\breference (number|#)\\b", 2],
+      ["\\bnot a (marketing|promotional) (e-?mail|message)\\b|\\b(transactional|service|account) (e-?mail|message|notice)\\b", 2],
+      ["\\byou(?:'re| are)? receiv\\w* this (e-?mail|message) because you (made|placed|booked|purchased|scheduled|requested|have an account|signed in)", 2],
+      ["\\b(direct deposit|refund (issued|processed|of)|autopay|auto-pay)\\b", 2]
+    ],
+    "marketing": [
+      ["\\bthis (message|e-?mail) is an? (advertisement|ad|promotion|promotional (message|e-?mail)|commercial (message|e-?mail))\\b|\\bthis is an advertisement\\b|\\badvertisement from\\b", 3],
+      ["\\b\\d{1,2}\\s?% off\\b|\\bsave (up to )?\\$?\\d+", 2],
+      ["\\b(sale|clearance|deals?|special offers?|coupon|promo(tion)? code|discount|free shipping|bogo)\\b", 1],
+      ["\\b(limited time|ends (today|tonight|soon|sunday)|last chance|hurry|don'?t miss|while supplies last)\\b", 1],
+      ["\\b(shop|buy|book|order|sign up|register|try it|get started|learn more|discover) (now|today)\\b", 1],
+      ["\\b(new arrivals?|best ?sellers?|just dropped|now available|introducing|exclusive)\\b", 1],
+      ["\\bnewsletter\\b|\\bview (this e-?mail |it )?(in|on) (your |a )?(web )?browser\\b|\\bforward to a friend\\b", 1],
+      ["\\bunsubscribe\\b|\\bemail preferences\\b|\\bmanage (your )?subscriptions?\\b", 0.5]
+    ],
+    "header_marketing": {"list_unsubscribe": 0.5, "precedence_bulk": 0.5, "promotions_tab": 1.5},
+    "header_transactional": {"updates_tab": 1.0, "noreply_without_unsubscribe": 1.0}
+  },
+  "transactional_from": "^(no-?reply|do-?not-?reply|security|alerts?|receipts?|orders?|billing|invoices?|verify|verification|account-?security|auto-?confirm|shipment-?tracking|payments?)[@+._-]",
+
+  "freemail": ["gmail.com", "googlemail.com", "yahoo.com", "ymail.com", "outlook.com", "hotmail.com", "live.com",
+               "msn.com", "aol.com", "icloud.com", "me.com", "mac.com", "proton.me", "protonmail.com", "gmx.com",
+               "gmx.net", "mail.com", "yandex.com", "yandex.ru", "zoho.com", "qq.com", "163.com"],
+  "brands": ["paypal", "apple", "amazon", "google", "microsoft", "netflix", "chase", "bankofamerica", "wellsfargo",
+             "capitalone", "americanexpress", "usps", "fedex", "coinbase", "facebook", "instagram", "linkedin",
+             "dropbox", "docusign", "adobe", "walmart", "costco", "venmo", "spotify", "steampowered", "discord",
+             "binance", "kraken", "robinhood", "fidelity", "vanguard", "schwab"],
+  "brand_lookalike_exceptions": ["amazonses.com", "googlemail.com", "applemail.com"]
+}

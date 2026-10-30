@@ -1,0 +1,108 @@
+{
+  "_about": "What can be installed. The installer shows one checkbox per component, grouped; manage.py installs a component's launchd agents, Python extras (pyproject.toml), models (models.lock.json) and setup steps. requires lists components that are added with it.",
+  "groups": [
+    {"id": "assistant", "title": "Assistant"},
+    {"id": "everyday", "title": "Everyday helpers"},
+    {"id": "tidy", "title": "Tidying up"},
+    {"id": "focus", "title": "Focus"},
+    {"id": "email", "title": "Email and privacy"},
+    {"id": "touchbar", "title": "Touch Bar"}
+  ],
+  "components": [
+    {
+      "id": "assistant", "group": "assistant", "title": "atlas, the hotkey assistant",
+      "summary": "Press Ctrl+Option+Space and type: open apps and folders, find files by name or by what's in them, list and read files, run a shell command, install from Homebrew, battery and memory helpers, power saving, keyboard lock, do not disturb. The email agents' dashboards open here too.",
+      "agents": ["assistant"], "extras": ["assistant"], "models": ["all-MiniLM-L6-v2"], "requires": [], "permissions": ["accessibility"], "setup": []
+    },
+    {
+      "id": "clipboard", "group": "everyday", "title": "Clipboard tidy",
+      "summary": "Dedents copied code, and turns a copied URL into a Markdown link without tracking parameters.",
+      "agents": ["clipboard"], "extras": [], "models": [], "requires": [], "permissions": [], "setup": []
+    },
+    {
+      "id": "screentext", "group": "everyday", "title": "Copy text from the screen",
+      "summary": "Cmd+Shift+2: select a region and copy its text, read by Apple's on-device text recognition. Tables paste as columns and code keeps its indentation.",
+      "agents": ["screentext"], "extras": [], "models": [], "requires": [], "permissions": ["screen-recording"], "setup": ["ocr-helper"]
+    },
+    {
+      "id": "screenshotcopy", "group": "everyday", "title": "Screenshots to the clipboard",
+      "summary": "Copies each new screenshot (Cmd+Shift+3/4/5) to the clipboard as an image.",
+      "agents": ["screenshotcopy"], "extras": [], "models": [], "requires": [], "permissions": ["desktop-folder"], "setup": []
+    },
+    {
+      "id": "cmdnotify", "group": "everyday", "title": "Long command alerts",
+      "summary": "Shows an alert when a terminal command that ran for over 15 seconds finishes.",
+      "agents": ["cmdnotify"], "extras": [], "models": [], "requires": [], "permissions": [], "setup": []
+    },
+    {
+      "id": "autounpack", "group": "everyday", "title": "Unpack downloads",
+      "summary": "Unpacks archives that land in Downloads into a folder and moves the archive to the Trash.",
+      "agents": ["autounpack"], "extras": [], "models": [], "requires": [], "permissions": ["downloads-folder"], "setup": []
+    },
+    {
+      "id": "audioguard", "group": "everyday", "title": "Audio guard",
+      "summary": "Pauses and mutes when headphones drop to the speakers or the Mac sleeps, and switches to a display's speakers when one is connected.",
+      "agents": ["audioguard"], "extras": [], "models": [], "requires": [], "permissions": ["automation"], "setup": []
+    },
+    {
+      "id": "messagepopup", "group": "everyday", "title": "Popup inbox",
+      "summary": "Shows messages that your own scripts drop into the inbox folder as banners that stay until clicked.",
+      "agents": ["messagepopup"], "extras": [], "models": [], "requires": [], "permissions": [], "setup": []
+    },
+    {
+      "id": "stalearchiver", "group": "tidy", "title": "Desktop and Downloads archiver",
+      "summary": "Every night: moves Desktop screenshots to ~/Archive/Screenshots and items untouched for 14 days to ~/Archive/YYYY-MM, and trashes old installers and partial downloads.",
+      "agents": ["stalearchiver"], "extras": [], "models": [], "requires": [], "permissions": ["desktop-folder", "downloads-folder"], "setup": []
+    },
+    {
+      "id": "devclean", "group": "tidy", "title": "Developer cache cleaner",
+      "summary": "Sundays at 02:00: removes Python caches, and node_modules and target folders of projects untouched for 30 days.",
+      "agents": ["devclean"], "extras": [], "models": [], "requires": [], "permissions": ["desktop-folder", "documents-folder", "downloads-folder"], "setup": []
+    },
+    {
+      "id": "logtrimmer", "group": "tidy", "title": "Log trimmer",
+      "summary": "Saturdays at 01:00: deletes crash reports older than 7 days and empties logs over 50 MB.",
+      "agents": ["logtrimmer"], "extras": [], "models": [], "requires": [], "permissions": [], "setup": []
+    },
+    {
+      "id": "packagemanagergc", "group": "tidy", "title": "Package cache cleaner",
+      "summary": "On the 1st of each month: cleans the Homebrew, pip, npm, pnpm, yarn and uv caches.",
+      "agents": ["packagemanagergc"], "extras": [], "models": [], "requires": [], "permissions": [], "setup": []
+    },
+    {
+      "id": "appblocker", "group": "focus", "title": "App blocker",
+      "summary": "Quits Music, TV, Podcasts, Tips, Freeform and Image Playground the moment they open, and answers the Play key itself so macOS stops launching Music.",
+      "agents": ["appblocker"], "extras": ["appblocker"], "models": [], "requires": [], "permissions": [], "setup": []
+    },
+    {
+      "id": "sitemonitor", "group": "focus", "title": "Adult-site blocker",
+      "summary": "Quits the browser when its active tab is on the OISD NSFW blocklist. Two agents restart each other so it can't be switched off on a whim; remove it here.",
+      "agents": ["sitemonitor", "sitekeeper"], "extras": ["sitemonitor"], "models": [], "requires": [], "permissions": ["accessibility", "automation"], "setup": []
+    },
+    {
+      "id": "mail", "group": "email", "title": "Gmail connection",
+      "summary": "Signs in to one Gmail account and checks it every 5 minutes for the email agents. Needs an OAuth client from your own Google Cloud project; setup walks you through it.",
+      "agents": ["mailpoller"], "extras": [], "models": [], "requires": [], "permissions": [], "setup": ["gmail-sign-in"]
+    },
+    {
+      "id": "unsub", "group": "email", "title": "Inbox unsubscriber",
+      "summary": "Works out which senders you don't want from what you do with their mail and, with your approval, unsubscribes or blocks them. A report every Sunday.",
+      "agents": ["unsubscriber"], "extras": ["unsub"], "models": [], "requires": ["mail", "assistant"], "permissions": [], "setup": ["browser"]
+    },
+    {
+      "id": "brokers", "group": "email", "title": "Data broker removal",
+      "summary": "Asks data brokers to delete what they hold on you and follows each request until the listing is gone. Nothing is sent until you enter your details and approve.",
+      "agents": ["brokeragent"], "extras": ["brokers"], "models": ["nli-deberta-v3-xsmall"], "requires": ["mail", "assistant"], "permissions": [], "setup": ["browser", "broker-registry", "your-details"]
+    },
+    {
+      "id": "dataflow", "group": "email", "title": "Where does my email go (Edge extension)",
+      "summary": "An Edge extension that shows, under every field, who gets what you type, blocks what can be blocked, and tests risky fields with a throwaway address.",
+      "agents": ["dataflow"], "extras": ["dataflow"], "models": ["nli-deberta-v3-base", "bert-base-NER", "all-MiniLM-L6-v2"], "requires": [], "permissions": [], "setup": ["browser", "field-head", "native-host", "load-extension"], "apps": ["Microsoft Edge"]
+    },
+    {
+      "id": "pockkeeper", "group": "touchbar", "title": "Pock keeper",
+      "summary": "Relaunches Pock, the Touch Bar app, if it dies. Only useful with Pock installed.",
+      "agents": ["pockkeeper"], "extras": [], "models": [], "requires": [], "permissions": [], "setup": [], "apps": ["Pock"]
+    }
+  ]
+}

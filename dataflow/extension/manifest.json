@@ -1,0 +1,87 @@
+{
+  "manifest_version": 3,
+  "name": "Where does my email go",
+  "version": "0.1.0",
+  "description": "Shows under every field which scripts and companies listen to it, read it or send it, which are data brokers, and what the privacy policy says. Blocks what it can.",
+  "minimum_chrome_version": "120",
+  "permissions": [
+    "nativeMessaging",
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "fields.js",
+        "content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true,
+      "match_origin_as_fallback": true,
+      "exclude_matches": [
+        "*://accounts.google.com/*",
+        "*://login.microsoftonline.com/*",
+        "*://login.microsoft.com/*",
+        "*://login.live.com/*",
+        "*://appleid.apple.com/*",
+        "*://idmsa.apple.com/*"
+      ]
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "inject.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true,
+      "match_origin_as_fallback": true,
+      "world": "MAIN",
+      "exclude_matches": [
+        "*://accounts.google.com/*",
+        "*://login.microsoftonline.com/*",
+        "*://login.microsoft.com/*",
+        "*://login.live.com/*",
+        "*://appleid.apple.com/*",
+        "*://idmsa.apple.com/*"
+      ]
+    }
+  ],
+  "action": {
+    "default_title": "Where does my email go: analyze every field on this page"
+  },
+  "commands": {
+    "analyze-all": {
+      "suggested_key": {
+        "default": "Alt+Shift+A"
+      },
+      "description": "Analyze every visible field and open its panel"
+    },
+    "select-fields": {
+      "suggested_key": {
+        "default": "Alt+Shift+S"
+      },
+      "description": "Drag a rectangle to analyze the fields inside it"
+    }
+  },
+  "icons": {
+    "16": "icons/16.png",
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  }
+}
