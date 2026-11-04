@@ -25,6 +25,7 @@ BIN="$(swift build -c release --package-path "$ROOT/installer" --show-bin-path)/
 rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$PAYLOAD"
 cp "$BIN" "$APP/Contents/MacOS/Mac Utils"
+strip -S "$APP/Contents/MacOS/Mac Utils"   # its debug map names the build folders on this Mac (signed below)
 cat > "$APP/Contents/Info.plist" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
